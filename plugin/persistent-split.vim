@@ -1,29 +1,29 @@
 
 let g:pbuffList = []
 
-function! persistent-split#MakePersistent(buffNr)
+function! s:persistent-split#MakePersistent(buffNr)
     call append(g:pbuffList, a:buffNr)
 endfunction
 
-function! persistent-split#UnmakePersistent(buffNr)
+function! s:persistent-split#UnmakePersistent(buffNr)
     call remove(g:pbuffList, a:buffNr)
 endfunction
 
-function! persistent-split#NewPersistent(position)
+function! s:persistent-split#NewPersistent(position)
 endfunction
 
-function! persistent-split#NewVerticalPersistent()
+function! s:persistent-split#NewVerticalPersistent()
 endfunction
 
-function! persistent-split#NewHorizontalPersistent()
+function! s:persistent-split#NewHorizontalPersistent()
 endfunction
 
-function! persistent-split#KeepPersistent()
+function! s:persistent-split#KeepPersistent()
     for l:buff in g:pbuffList
         vsp l:buff
 endfunction
 
-autocmd! BufNew * call persistent-split#KeepPersistent()
+autocmd! BufNew * call s:persistent-split#KeepPersistent()
 
-command! MakePersistent call persistent-split#MakePersistent(bufnr('%'))
-command! UnmakePersistent call persistent-split#UnmakePersistent(bufnr('%'))
+command! MakePersistent call s:persistent-split#MakePersistent(bufnr('%'))
+command! UnmakePersistent call s:persistent-split#UnmakePersistent(bufnr('%'))
